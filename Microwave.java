@@ -11,7 +11,9 @@ import java.util.Scanner;
 * @since   2023-02-22
 */
 
+
 public final class Microwave {
+
 
     /**
      * This is a private constructor used to satisfy the
@@ -24,13 +26,14 @@ public final class Microwave {
         throw new IllegalStateException("Utility class");
     }
 
+
     /**
      * This is the main method.
      *
      * @param args Unused.
      */
     public static void main(String[] args) {
-        // declare constant
+        // declare constants
         final String FOOD_ONE = "pizza";
         final String FOOD_TWO = "sub";
         final String FOOD_THREE = "soup";
@@ -38,24 +41,31 @@ public final class Microwave {
         final float AVE_SUB_TIME = 60;
         final float AVE_SOUP_TIME = 105;
         final float HALF_TIME = 1f / 2f;
-        final float time;
+        final String ERROR_MESSAGE = "Sorry but you can "
+            + "only select 0,1,2 or 3";
 
+        // initialize number of food items
+        String numOfItems = "";
+        int numOfItemsInt = 0;
+        float time = 0f;
+        String userFood = "";
 
-        // Create a new scanner
+        // Create a new scanner constant
         final Scanner scanner = new Scanner(System.in);
 
         // Gets food type from user
         System.out.println("Are you heating sub, pizza, or soup?: ");
-        final String userFood = scanner.nextLine();
+        userFood = scanner.nextLine();
 
-        if (userFood.equals(FOOD_ONE)){ 
+        if (userFood.equals(FOOD_ONE)) {
             // Gets number of food being heated
             System.out.println("How many pizza(s) are you cooking?(max:3): ");
-            final String numOfItems = scanner.nextLine();
+            numOfItems = scanner.nextLine();
+
             // Detects string input.
             try {
                 // Convert string to integer
-                final Integer numOfItemsInt = Integer.parseInt(numOfItems);
+                numOfItemsInt = Integer.parseInt(numOfItems);
 
                 if (numOfItemsInt == 0) {
                     // Calculates time
@@ -74,22 +84,22 @@ public final class Microwave {
                     time = AVE_PIZ_TIME + AVE_PIZ_TIME;
                     System.out.println("The total cook time is: " + time + "s");
                 } else {
-                    System.out.println("Sorry but you can only select 
-                        0,1,2 or 3");
+                    System.out.println(ERROR_MESSAGE);
                 }
             } catch (NumberFormatException error) {
                 // Displays error to user.
                 System.out.print("Please enter valid input."
                     + error.getMessage());
             }
-        } else if (userFood.equals(FOOD_TWO)){
+        } else if (userFood.equals(FOOD_TWO)) {
             // Gets number of food being heated
             System.out.println("How many sub(s) are you cooking?(max:3): ");
-            final String numOfItems = scanner.nextLine();
+            numOfItems = scanner.nextLine();
+
             // Detects string input.
             try {
                 // Convert string to Integer
-                final Integer numOfItemsInt = Integer.parseInt(numOfItems);
+                numOfItemsInt = Integer.parseInt(numOfItems);
 
                 if (numOfItemsInt == 0) {
                     // Calculates time
@@ -108,22 +118,22 @@ public final class Microwave {
                     time = AVE_SUB_TIME + AVE_SUB_TIME;
                     System.out.println("The total cook time is: " + time + "s");
                 } else {
-                    System.out.println("Sorry but you can only select 
-                        0,1,2 or 3");
+                    System.out.println(ERROR_MESSAGE);
                 }
             } catch (NumberFormatException error) {
                 // Displays error to user.
                 System.out.print("Please enter valid input."
                     + error.getMessage());
             }
-        } else if (userFood.equals(FOOD_THREE)){
+        } else if (userFood.equals(FOOD_THREE)) {
             // Gets number of food being heated
             System.out.println("How many soup(s) are you cooking?(max:3): ");
-            final String numOfItems = scanner.nextLine();
+            numOfItems = scanner.nextLine();
+
             // Detects string input.
             try {
                 // Convert string to Integer
-                final Integer numOfItemsInt = Integer.parseInt(numOfItems);
+                numOfItemsInt = Integer.parseInt(numOfItems);
 
                 if (numOfItemsInt == 0) {
                     // Calculates Time
@@ -142,17 +152,16 @@ public final class Microwave {
                     time = AVE_SOUP_TIME + AVE_SOUP_TIME;
                     System.out.println("The total cook time is: " + time + "s");
                 } else {
-                    System.out.println("Sorry but you can only select 
-                        0,1,2 or 3");
+                    System.out.println(ERROR_MESSAGE);
                 }
             } catch (NumberFormatException error) {
                 // Displays error to user.
                 System.out.print("Please enter valid input."
                     + error.getMessage());
             }
-        } else { 
+        } else {
             System.out.println("Sorry but '" + userFood
-             + "' is not one of the options.");
+                + "' is not one of the options.");
         }
         // Closes scanner
         scanner.close();
